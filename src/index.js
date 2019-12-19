@@ -2,55 +2,50 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import PbList from "./components/PBList/PbList"
-
-
-
-
+import PbList from "./components/PBList/PbList";
+import Map from "./components/googleMap/gMap"
 
 
 class App extends React.Component {
   state = {
-    Devices:[]
-  }
+    Devices: []
+  };
+  componentDidMount = () => {
+    let urlType = `https://api.privatbank.ua/p24api/infrastructure?json&atm&address=&city=Zdolbuniv`;
 
- 
-
-render() { 
-      let urlType = `https://api.privatbank.ua/p24api/infrastructure?json&atm&address=&city=Zdolbuniv`;
-     let Device =[] 
-      let req = new Request(urlType);
-      fetch(req)
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          setTimeout(() => {
-            this.setState(()=>{
-              this.state.Devices = [...this.state.Devices, data.devices]
-              console.log(this.state.Devices)
-            })
-            
-          },600)
-        })
-        .catch(() => {
-          return console.log("error", req);
+    let req = new Request(urlType);
+    fetch(req)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        this.setState(() => {
+          return {
+            Devices: data.devices
+          };
         });
-   console.log(Device)
-    
-    
-     
+      })
+      .catch(() => {
+        return console.log("error", req);
+      });
+  };
+
+  getLocation = fullAddressRu => {
+    const index = this.state.Devices.findIndex(elem => elem.fullAddressRu === fullAddressRu);
+    console.log(index)
+  }
+  render() {
     return (
       <Router>
         <div className="container bootstrap snippet">
-          <h1 onClick={this.GetURL}> Contact List </h1>
-          {/* <PbList PBdevice={this.state.Devices}
-            /> */}
+          <h1 onClick={this.GetURL}> Choose your address PB </h1>
+          <PbList Terminals={this.state.Devices}
+          getLocation={this.getLocation} />
+          <Map getLocation={this.getLocation} />
           <Switch></Switch>
         </div>
       </Router>
     );
   }
-
 }
 ReactDOM.render(<App />, document.getElementById("root"));
