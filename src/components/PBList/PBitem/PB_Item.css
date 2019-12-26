@@ -1,90 +1,14 @@
-.block {
-  background-color: #fff;
-  transition: all 500ms;
-  margin-top: 20px;
-  border: solid 10px white;
-  min-width: 375px;
+.map{
+  align-self: flex-end;
 }
-.block:hover {
-  box-shadow: 7px 6px 20px 0px black;
+ul{
+  list-style: none;
 }
-li > a {
-  transition: all 500ms;
-  margin-left: 8px;
+p{
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 4px 2px 9px rgb(244, 253, 161)
 }
-li > a:hover {
-  background-color: rgb(35, 164, 207);
-  color: black;
-  transform: scale(1.5);
-}
-.fa-pencil {
-  transition: all 500ms;
-}
-.fa-close {
-  transition: all 500ms;
-}
-.tooltips:hover .fa-pencil {
-  transform: rotate(-45deg);
-}
-.tooltips:hover .fa-close {
-  transform: rotate(-180deg);
-}
-.btn-warning,
-.random {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
-.bordered {
-  border: solid 10px lightblue;
-  border-radius: 10px;
-}
-.favor {
-  border: solid 10px rgb(224, 228, 2);
-  border-radius: 10px;
-  box-shadow: 7px 6px 20px 0px rgb(224, 228, 2);
-}
-.star {
-  position: absolute;
-  left: 60%;
-  bottom: 10px;
-  color: rgba(204, 204, 204, 0.8);
-  cursor: pointer;
-  font-size: 24px;
-  transition: all 300ms;
-}
-.star:hover {
-  font-size: 36px;
-  left: 59%;
-  bottom: 0px;
-}
-.star-actived {
-  position: absolute;
-  left: 59%;
-  bottom: 0px;
-  color: rgb(224, 228, 2);
-  cursor: pointer;
-  font-size: 36px;
-  transition: all 300ms;
-}
-@media screen and (max-width: 991px) {
-  .block {
-    margin-left: 0;
-  }
-
-  li > a {
-    font-size: 12px;
-    margin-left: 2px;
-    transform: scale(0.8);
-  }
-  .star {
-    left: 55%;
-  }
-  .star-actived {
-    left: 52%;
-    font-size: 36px;
-  }
-  .random {
-    padding: 3px 5px;
-  }
+small{
+  color: rgb(197, 197, 3);
 }

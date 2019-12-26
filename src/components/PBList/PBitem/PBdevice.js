@@ -7,19 +7,24 @@ class PBdevice extends React.Component {
     fullAddressRu: this.props.fullAddressRu,
     placeRu: this.props.placeRu,
     latitude: this.props.latitude,
-    longitude: this.props.longitude
+    longitude: this.props.longitude,
+    type: this.props.type
   };
 
   render() {
-    
-    console.log(this.props);
-    const{cityRU,fullAddressRu,placeRu,latitude,longitude}=this.state
+
+    const { cityRU, fullAddressRu, placeRu, latitude, longitude,type } = this.state;
     return (
-      <div className="row d-flex flex-column">
+      <div className="col-8 offset-2  d-flex flex-column">
         <h2>{cityRU}</h2>
-        <h6>{fullAddressRu}</h6>
-        <div>
-          <button onClick={this.props.getLocation}></button>
+        <ul>
+          <li>{fullAddressRu}</li>
+        </ul>
+        <p className="offset-5">{placeRu}</p>
+        <p>Банкомат типа: "{type}"</p>
+        <small>координаты: {latitude},{longitude}</small>
+        <div className='map'>
+          <button className='btn btn-outline-warning' onClick={this.props.getLocation}>Show on map</button>
         </div>
       </div>
     );
